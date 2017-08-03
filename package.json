@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --progress --colors --host 0.0.0.0"
   },
   "dependencies": {
-    "html-webpack-plugin": "^2.29.0",
+    "html-webpack-plugin": "^2.30.1",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -27,8 +27,8 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.3",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0",
     "sinon": "^2.3.5"
   }
 }

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 
 export default class Hello extends React.Component {
@@ -10,6 +8,6 @@ export default class Hello extends React.Component {
   render() {
     return (
       <p>{this.msg}</p>
-      );
+    );
   }
-};
+}
