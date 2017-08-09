@@ -1,5 +1,5 @@
 import React from 'react';
-import Hello from './hello.js';
+import Hello from './components/hello';
 
 export default class App extends React.Component {
   render() {
