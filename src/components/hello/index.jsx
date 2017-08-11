@@ -5,7 +5,7 @@ import Hello from './hello';
 const propsFromState = state => ({ greetingText: state.greeting.greetingText });
 
 const dispatchActionCallbacks = {
-  getGreetingHandler: requestGreeting, 
+  getGreetingHandler: requestGreeting,
 };
 
 export default connect(propsFromState, dispatchActionCallbacks)(Hello);
