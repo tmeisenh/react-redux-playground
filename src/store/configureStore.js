@@ -5,13 +5,12 @@ import reducers from '../reducers';
 import sagas from '../sagas';
 
 export default () => {
-  // const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware();
 
   const store = createStore(reducers,
-    applyMiddleware(logger));
-  // applyMiddleware(logger, sagaMiddleware));
+    applyMiddleware(logger, sagaMiddleware));
 
-  // sagaMiddleware.run(sagas);
+  sagaMiddleware.run(sagas);
 
   return store;
 };
