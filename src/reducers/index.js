@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
+import greeter from './greeter';
 
-export default rootReducer = combineReducers({
-});
+export default combineReducers({ greeter });

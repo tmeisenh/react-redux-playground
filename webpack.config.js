@@ -1,20 +1,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './src/index.html',
-  filename: 'index.html',
-  inject: 'body',
-});
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'babel-polyfill',
+    './src/index.jsx',
+  ],
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',
   },
+  resolve: {
+    extensions: ['.js', '.json', '.jsx'],
+  },
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './src'
+    contentBase: './src',
   },
   module: {
     loaders: [
@@ -22,5 +24,11 @@ module.exports = {
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
     ],
   },
-  plugins: [HtmlWebpackPluginConfig],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body',
+    }),
+  ],
 };

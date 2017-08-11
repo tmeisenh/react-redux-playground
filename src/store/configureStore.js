@@ -1,30 +1,17 @@
-import {createStore, applyMiddleware} from 'redux';
-import createLogger from 'redux-logger';
-import createSagaMiddleware, { END } from 'redux-saga'
-import rootReducer from '../reducers'
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
+import reducers from '../reducers';
+import sagas from '../sagas';
 
-export default function configureStore(initialState) {
-  const sagaMiddleware = createSagaMiddleware()
-  const store = createStore(
-    rootReducer,
-    initialState,
-    compose(
-      applyMiddleware(
-        sagaMiddleware,
-        createLogger()
-      )
-    )
-  )
+export default () => {
+  // const sagaMiddleware = createSagaMiddleware();
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default
-      store.replaceReducer(nextRootReducer)
-    })
-  }
-  store.runSaga = sagaMiddleware.run
-  store.close = () => store.dispatch(END)
+  const store = createStore(reducers,
+    applyMiddleware(logger));
+  // applyMiddleware(logger, sagaMiddleware));
 
-  return store
-}
+  // sagaMiddleware.run(sagas);
+
+  return store;
+};
