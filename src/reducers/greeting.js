@@ -1,6 +1,10 @@
 import actionTypes from '../actions/action-types';
 
-export default (state = {}, action) => {
+const defaultState = () => ({
+  greetingText: '',
+});
+
+export default (state = defaultState(), action) => {
   switch (action.type) {
     case actionTypes.GREETING_REQUEST:
       return state;
