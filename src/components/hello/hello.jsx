@@ -16,13 +16,25 @@ class Hello extends React.Component {
         <p>{ this.props.greetingText }</p>
       </div>
     );
-    return hello();
+    const error = () => (
+      <div>
+        <p>{ this.props.error }</p>
+      </div>
+    );
+
+    return this.props.error !== Hello.defaultProps.error ? error() : hello();
   }
 }
 
 Hello.propTypes = {
-  greetingText: PropTypes.string.isRequired,
   getGreetingHandler: PropTypes.func.isRequired,
+  greetingText: PropTypes.string,
+  error: PropTypes.string,
+};
+
+Hello.defaultProps = {
+  greetingText: '',
+  error: '',
 };
 
 export default Hello;

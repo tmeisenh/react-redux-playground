@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --host 0.0.0.0",
-    "test": "mocha --require babel-polyfill --require jsdom-global/register --compilers js:babel-core/register jsx:babel-core/register --reporter spec --colors --recursive --timeout 10000 src/**/*-spec.js{,x}"
+    "test": "nyc mocha --require babel-polyfill --require jsdom-global/register --compilers js:babel-core/register jsx:babel-core/register --reporter spec --colors --recursive --timeout 10000 src/**/*-spec.js{,x}"
   },
   "dependencies": {
     "history": "^4.6.3",
@@ -36,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "html-webpack-plugin": "^2.30.1",
+    "inject-loader": "^3.0.1",
     "jsdom": "^11.1.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^3.5.0",
