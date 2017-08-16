@@ -2,16 +2,15 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
-import { expect }from 'chai'; 
+import { expect } from 'chai'; 
 
 import ConnectedComponent from './';
 import { ActionTypes } from '../../actions/action-types';
 import configureStore from '../../store/configureStore';
 
-import {api} from '../../services/greeting';
+import { api } from '../../services/greeting';
 
 describe('Hello Connected Component', () => {
-
   let sandbox;
   let store;
   let apiStub;
@@ -40,7 +39,7 @@ describe('Hello Connected Component', () => {
     );
 
     const initialStore = store.getState(ActionTypes.GREETING_REQUEST).greeting;
-    expect(initialStore).to.eql({greetingText: 'loading...'});
+    expect(initialStore).to.eql({ greetingText: 'loading...' });
 
     const p = testObject.find('p');
     expect(p.length).to.equal(1);
@@ -56,13 +55,12 @@ describe('Hello Connected Component', () => {
 
     return wait(0).then(() => {
       const state = store.getState(ActionTypes.GREETING_SENT).greeting;
-      expect(state).to.eql({greetingText: 'Hello world!'});
+      expect(state).to.eql({ greetingText: 'Hello world!' });
 
       const p = testObject.find('p');
       expect(p.length).to.equal(1);
       expect(p.text()).to.eql('Hello world!');
     });
-
   });
 
   it('shows error when greeting fetch fails', () => {
@@ -76,7 +74,7 @@ describe('Hello Connected Component', () => {
 
     return wait(0).then(() => {
       const state = store.getState(ActionTypes.GREETING_ERROR).greeting;
-      expect(state).to.eql({greetingText:'loading...', error: 'oh noes'});
+      expect(state).to.eql({ greetingText: 'loading...', error: 'oh noes' });
 
       const p = testObject.find('p');
       expect(p.length).to.equal(1);
