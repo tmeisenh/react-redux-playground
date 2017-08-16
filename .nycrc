@@ -1,0 +1,27 @@
+{
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "all": true,
+    "include": [
+      "src/**/*.js",
+      "src/**/*.jsx"
+    ],
+    "exclude": [
+      "src/**/*spec.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "extension": [
+      ".jsx",
+      ".js"
+    ],
+    "cache": false
+  }
+}

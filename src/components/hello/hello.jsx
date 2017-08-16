@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Hello extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.props.getGreetingHandler();
   }
@@ -16,6 +12,7 @@ class Hello extends React.Component {
         <p>{ this.props.greetingText }</p>
       </div>
     );
+
     const error = () => (
       <div>
         <p>{ this.props.error }</p>
