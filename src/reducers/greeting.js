@@ -12,7 +12,7 @@ export default (state = defaultState(), action) => {
       return { ...state, greetingText: action.greetingText };
     case ActionTypes.GREETING_ERROR:
       return { ...state, error: action.error };
-    default: 
+    default:
       return state;
   }
 };
