@@ -8,7 +8,7 @@ import TableViewCell from './table-view-cell';
 const buildTable = data => (
   <div>
     {
-      data.map(x => (<TableViewCell key={x.key} data={x} />))
+      data.map(x => (<TableViewCell key={x.key} id={x.id} />))
     }
   </div>
 );
@@ -22,9 +22,6 @@ TableView.propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      age: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
     })).isRequired,
 };
 
