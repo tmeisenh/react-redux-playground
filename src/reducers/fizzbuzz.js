@@ -1,8 +1,9 @@
 import { TEXTFIELDUPDATED } from '../actions/fizzbuzz';
+import fizzBuzz from '../services/fizzbuzz';
 
 const defaultState = () => ({
   textValue: '',
-  result: 'unknown result',
+  result: '-',
 });
 
 export default (state = defaultState(), action) => {
@@ -11,6 +12,7 @@ export default (state = defaultState(), action) => {
       return {
         ...state,
         textValue: action.textFieldValue,
+        result: fizzBuzz(action.textFieldValue),
       };
     default:
       return state;

@@ -11,10 +11,8 @@ const Component = ({
 }) => (
   <div>
     <h2>Hello fizz buzz.</h2>
-    <label>
-          Name:
-      <input type="text" value={textValue} onChange={event => textChangeHandler(event.target.value)} />
-    </label>
+    <p>For numbers that are multiples of 3, print Fizz.  For numbers that are multiples of 5 print Buzz.  For numbers that are multiples of 3 and 5 print FizzBuzz</p>
+    <input type="text" value={textValue} onChange={event => textChangeHandler(event.target.value)} />
     <h2>result is: {result}</h2>
   </div>
 );
