@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import ourHistory from './services/history-provider';
 import MainScreen from './screens/main';
 
-import WholeOtherScreen from './fizzbuzz';
+import WholeOtherScreen from './components/fizzbuzz';
 import TableView from './components/list';
 
 // Multiple screens, b/c why not?
