@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -13,11 +12,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './src',
-    historyApiFallback: true,
   },
   module: {
     loaders: [

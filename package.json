@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --host 0.0.0.0",
+    "start": "webpack-dev-server --progress --colors --host 0.0.0.0 --config ./webpack.dev.config.js",
     "test": "nyc mocha --require babel-polyfill --require src/test/testSetUp.js --require jsdom-global/register --compilers js:babel-core/register jsx:babel-core/register --reporter spec --colors --recursive --timeout 10000 src/**/*-spec.js{,x}"
   },
   "dependencies": {
@@ -52,6 +52,7 @@
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.1",
-    "webpack-hot-middleware": "^2.21.0"
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-merge": "^4.1.1"
   }
 }
