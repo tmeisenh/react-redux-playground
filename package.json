@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --host 0.0.0.0 --config ./webpack.dev.config.js",
+    "dist" : "NODE_ENV=production webpack --config ./webpack.prod.config.js",
+    "start": "NODE_ENV=development webpack-dev-server --progress --colors --host 0.0.0.0 --config ./webpack.dev.config.js",
     "test": "nyc mocha --require babel-polyfill --require src/test/testSetUp.js --require jsdom-global/register --compilers js:babel-core/register jsx:babel-core/register --reporter spec --colors --recursive --timeout 10000 src/**/*-spec.js{,x}"
   },
   "dependencies": {
@@ -49,6 +50,7 @@
     "react-test-renderer": "^16.2.0",
     "redux-devtools": "^3.4.1",
     "sinon": "^4.2.2",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.1",
