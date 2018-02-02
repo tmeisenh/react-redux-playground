@@ -11,7 +11,7 @@ export default (state = defaultState(), action) => {
     case ActionTypes.GREETING_SENT:
       return { ...state, greetingText: action.greetingText };
     case ActionTypes.GREETING_ERROR:
-      return { ...state, error: action.error };
+    return { ...state, error: action.error };
     default:
       return state;
   }

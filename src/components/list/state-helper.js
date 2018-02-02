@@ -1,1 +1,3 @@
-export const cellStateForId = (state, id) => state.listy.data[id];
+import _ from 'lodash';
+
+export const cellStateForId = (state, id) => _.find(state.listy.data, { id });
