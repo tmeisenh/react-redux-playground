@@ -2,10 +2,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
-import { expect } from 'chai'; 
+import { expect } from 'chai';
 
 import ConnectedComponent from './';
-import { ActionTypes } from '../../actions/action-types';
+import {
+  GREETING_REQUEST,
+  GREETING_SENT,
+  GREETING_ERROR,
+} from '../../actions/';
 import configureStore from '../../store/configureStore';
 
 import { api } from '../../services/greeting';
@@ -38,7 +42,7 @@ describe('Hello Connected Component', () => {
       </Provider>,
     );
 
-    const initialStore = store.getState(ActionTypes.GREETING_REQUEST).greeting;
+    const initialStore = store.getState(GREETING_REQUEST).greeting;
     expect(initialStore).to.eql({ greetingText: 'loading...' });
 
     const p = testObject.find('p');
@@ -54,7 +58,7 @@ describe('Hello Connected Component', () => {
     );
 
     return wait(0).then(() => {
-      const state = store.getState(ActionTypes.GREETING_SENT).greeting;
+      const state = store.getState(GREETING_SENT).greeting;
       expect(state).to.eql({ greetingText: 'Hello world!' });
 
       const p = testObject.find('p');
@@ -73,7 +77,7 @@ describe('Hello Connected Component', () => {
     );
 
     return wait(0).then(() => {
-      const state = store.getState(ActionTypes.GREETING_ERROR).greeting;
+      const state = store.getState(GREETING_ERROR).greeting;
       expect(state).to.eql({ greetingText: 'loading...', error: 'oh noes' });
 
       const p = testObject.find('p');

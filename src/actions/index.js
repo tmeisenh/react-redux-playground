@@ -1,5 +1,7 @@
-import { ActionTypes } from './action-types';
+export const GREETING_REQUEST = 'GREETING_REQUEST';
+export const GREETING_SENT = 'GREETING_SENT';
+export const GREETING_ERROR = 'GREETING_ERROR';
 
-export const requestGreeting = () => ({ type: ActionTypes.GREETING_REQUEST });
-export const greetingSuccess = greetingText => ({ type: ActionTypes.GREETING_SENT, greetingText });
-export const greetingError = error => ({ type: ActionTypes.GREETING_ERROR, error });
+export const requestGreeting = () => ({ type: GREETING_REQUEST });
+export const greetingSuccess = greetingText => ({ type: GREETING_SENT, greetingText });
+export const greetingError = error => ({ type: GREETING_ERROR, error });

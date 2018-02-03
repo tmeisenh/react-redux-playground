@@ -1,4 +1,9 @@
-import { ActionTypes } from '../actions/action-types';
+import {
+  GREETING_REQUEST,
+  GREETING_SENT,
+  GREETING_ERROR,
+} from '../actions/';
+
 
 const defaultState = () => ({
   greetingText: 'loading...',
@@ -6,11 +11,11 @@ const defaultState = () => ({
 
 export default (state = defaultState(), action) => {
   switch (action.type) {
-    case ActionTypes.GREETING_REQUEST:
+    case GREETING_REQUEST:
       return state;
-    case ActionTypes.GREETING_SENT:
+    case GREETING_SENT:
       return { ...state, greetingText: action.greetingText };
-    case ActionTypes.GREETING_ERROR:
+    case GREETING_ERROR:
       return { ...state, error: action.error };
     default:
       return state;
