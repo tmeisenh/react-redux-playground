@@ -5,6 +5,7 @@ NPM_VERSION := $(shell npm --version)
 
 # Application Version
 APP_VERSION := $(shell node -pe "require('./package.json').version")
+APP_VERSION_BASH := $(shell cat package.json | grep version | head -n 1 | cut -d : -f 2 | sed -e 's/[",]//g' | tr -d '[[:space:]]')
 GIT_SHA := $(shell git rev-parse HEAD)
 LONG_VERSION := ${APP_VERSION}-${GIT_SHA}
 
@@ -16,11 +17,9 @@ DOCKER_RESOURCE = react-playground
 DOCKER_TAG := ${DOCKER_NAMESPACE}/${DOCKER_RESOURCE}:${LONG_VERSION}
 DOCKER_NAME := $(DOCKER_RESOURCE)-${HHOSTNAME}
 
-# space separted list: -p 8080:80 -p 4343:443
+# The following two variables are space separated lists.
 PORTS_TO_BIND = -p 8080:80
-# space separated list: -e FOO:bar -e BAR:foo
-# TODO: not sure how safe this is with unusual chars
-ENV_FOR_CONTAINER = -e ENV_NAME=local -e LONG_VERSION=$(LONG_VERSION)
+ENV_FOR_CONTAINER = -e ENV_NAME=local -e LONG_VERSION=$(LONG_VERSION) # TODO: not sure how safe this is with unusual chars
 
 checkNpm:
 #ifeq ($(NPM_VERSION),$(REQUIRED_NPM_VERSION))
@@ -41,6 +40,7 @@ dist: checkNpm clean
 
 package: dist
 	@echo "APP_VERSION: $(APP_VERSION)"
+	@echo "APP_VERSION_BASH: $(APP_VERSION_BASH)"
 	@echo "GIT_SHA: $(GIT_SHA)"
 	@echo "building docker $(DOCKER_TAG)..."
 	@docker build -t $(DOCKER_TAG) .
