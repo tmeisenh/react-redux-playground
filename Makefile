@@ -54,7 +54,7 @@ startshell:
 
 # shells into a running container
 shell:
-	@docker exec -i --tty $(DOCKER_NAME) /bin/sh
+	@docker exec --interactive --tty $(DOCKER_NAME) /bin/sh
 
 start:
 	@docker run --rm --detach --tty --name $(DOCKER_NAME) $(PORTS_TO_BIND) $(ENV_FOR_CONTAINER) $(DOCKER_TAG)
