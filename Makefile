@@ -22,7 +22,6 @@ PORTS_TO_BIND = -p 8080:80
 ENV_FOR_CONTAINER = -e ENV_NAME=local -e LONG_VERSION=$(LONG_VERSION) # TODO: not sure how safe this is with unusual chars
 
 checkNpm:
-#ifeq ($(NPM_VERSION),$(REQUIRED_NPM_VERSION))
 ifeq "${NPM_VERSION}" "${REQUIRED_NPM_VERSION}"
 	@echo "Good news! You have the right version of npm installed."
 else
