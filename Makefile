@@ -31,17 +31,22 @@ else
 	@npm install --global npm@${REQUIRED_NPM_VERSION}
 endif
 
-dist: checkNpm
+clean:
+	@rm -rf dist
+	@rm -rf node_modules
+
+dist: checkNpm clean
+	@npm install
 	@npm run dist
 
-package:
+package: dist
 	@echo "APP_VERSION: $(APP_VERSION)"
 	@echo "GIT_SHA: $(GIT_SHA)"
 	@echo "building docker $(DOCKER_TAG)..."
 	@docker build -t $(DOCKER_TAG) .
 	@echo "Done."
 
-deploy:
+deploy: package
 	@echo docker push $(DOCKER_TAG) .
 
 # starts a container and shells into it
