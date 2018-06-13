@@ -50,14 +50,14 @@ deploy: package
 
 # starts a container and shells into it
 startshell:
-	@docker run --rm --name $(DOCKER_NAME) -i $(PORTS_TO_BIND) $(ENV_FOR_CONTAINER) -t $(DOCKER_TAG) /bin/sh
+	@docker run --rm --tty --name $(DOCKER_NAME) --interactive $(PORTS_TO_BIND) $(ENV_FOR_CONTAINER) $(DOCKER_TAG) /bin/sh
 
 # shells into a running container
 shell:
-	@docker exec -i -t $(DOCKER_NAME) /bin/sh
+	@docker exec -i --tty $(DOCKER_NAME) /bin/sh
 
 start:
-	@docker run --rm --detach --tty --name $(DOCKER_NAME) $(PORTS_TO_BIND) $(ENV_FOR_CONTAINER) -t $(DOCKER_TAG)
+	@docker run --rm --detach --tty --name $(DOCKER_NAME) $(PORTS_TO_BIND) $(ENV_FOR_CONTAINER) $(DOCKER_TAG)
 
 stop:
 	@docker stop $(DOCKER_NAME)
